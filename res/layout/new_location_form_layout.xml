@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/new_location_form"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+   <TextView
+        android:text="New Location"
+        style="@style/AppTitle" />
+   
+   <EditText xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:hint=" enter location name" />
+
+
+   <Button android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="save"
+            android:text="save"/>
+	
+</LinearLayout>
+    
+

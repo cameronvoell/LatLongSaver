@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_confirmation_view"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<com.google.android.maps.MapView
+    			 android:id="@+id/conf_mapview"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:apiKey="0luVnqWc9Jwz2QRPsSuE8des8LnJPsAC3Rxu-VA"
+                 />
+<Button
+	    android:id="@+id/confirm_button"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:onClick="confirm"
+	    android:text="click to confirm icon is updated to current location" />
+</RelativeLayout>
