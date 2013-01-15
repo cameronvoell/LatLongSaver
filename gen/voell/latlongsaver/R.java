@@ -17,22 +17,24 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int back_button=0x7f07000e;
-        public static final int conf_mapview=0x7f070008;
-        public static final int confirm_button=0x7f070009;
-        public static final int coordinates_input=0x7f07000b;
-        public static final int coordinates_input_view=0x7f07000a;
-        public static final int edit_name=0x7f07000d;
+        public static final int back_button=0x7f070010;
+        public static final int conf_mapview=0x7f07000a;
+        public static final int confirm_button=0x7f07000b;
+        public static final int coordinates_input=0x7f07000d;
+        public static final int coordinates_input_view=0x7f07000c;
+        public static final int deleteAll=0x7f070004;
+        public static final int edit_name=0x7f07000f;
+        public static final int exportList=0x7f070005;
         public static final int location_lat=0x7f070001;
         public static final int location_lng=0x7f070002;
         public static final int location_name=0x7f070000;
-        public static final int locationmaptabview=0x7f070005;
-        public static final int map_confirmation_view=0x7f070007;
-        public static final int mapview=0x7f070006;
-        public static final int menu_settings=0x7f07000f;
-        public static final int myCoordinateList=0x7f070004;
+        public static final int locationmaptabview=0x7f070007;
+        public static final int map_confirmation_view=0x7f070009;
+        public static final int mapview=0x7f070008;
+        public static final int menu_settings=0x7f070011;
+        public static final int myCoordinateList=0x7f070006;
         public static final int newItem=0x7f070003;
-        public static final int new_location_form=0x7f07000c;
+        public static final int new_location_form=0x7f07000e;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

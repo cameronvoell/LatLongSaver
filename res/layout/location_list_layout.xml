@@ -3,20 +3,48 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal" >
 
-    <TextView
+   
+     <Button
+        android:id="@+id/newItem"
+        style="@style/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addNew"
+        android:text=" add " />
+     <Button
+        android:id="@+id/deleteAll"
+        style="@style/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAll"
+        android:text=" clear " />
+     <Button
+        android:id="@+id/exportList"
+        style="@style/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="exportList"
+        android:text="export" />
+     <Button
+        android:id="@+id/exportList"
+        style="@style/AppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showHelp"
+        android:text=" help " />
+     </LinearLayout>
+      <TextView
         style="@style/AppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Saved Coordinates:"
         tools:context=".MainActivity" />
-     <Button
-        android:id="@+id/newItem"
-        style="@style/AppTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addNew"
-        android:text="new entry" />
 
     <ListView
         android:id="@+id/myCoordinateList"
