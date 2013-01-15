@@ -73,10 +73,13 @@ public class NewLocationFormActivity extends Activity{
 					null,
 					sortOrder
 					);
+			if (c.getCount() > 0){
 			c.moveToFirst();
 			
 			int highestID = Integer.valueOf(c.getString(c.getColumnIndex(ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID)));
-			return String.valueOf(highestID + 1);
+			return String.valueOf(highestID + 1);}
+			else
+				return String.valueOf(1);
 	}
 
 }

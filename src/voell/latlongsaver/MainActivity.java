@@ -50,7 +50,7 @@ public class MainActivity extends TabActivity {
 		//*****************************************************************************************************
 		//Creating a DBHelper which will give me access to SQLiteOpenHelper methods such as getWritableDatabase
 		//*****************************************************************************************************
-		GameDBHelper mDBHelper = new GameDBHelper(getBaseContext());
+		/*GameDBHelper mDBHelper = new GameDBHelper(getBaseContext());
 		SQLiteDatabase db = mDBHelper.getWritableDatabase();
 
 		//************************************************************
@@ -71,7 +71,7 @@ public class MainActivity extends TabActivity {
 			db.close();
 		}
 		else{}
-			db.close();
+			db.close();*/
 
 		
 

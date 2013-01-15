@@ -50,7 +50,6 @@ public class LocationListActivity extends Activity {
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 			CharSequence[] choices = {"choicea", "choiceb"};
 			alertDialogBuilder.setTitle("Delete this location?")
-			//.setMessage("uhhi")
 			.setPositiveButton("yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int ids) {
 					Toast.makeText(context, "chose 2", Toast.LENGTH_SHORT).show();
@@ -63,6 +62,7 @@ public class LocationListActivity extends Activity {
 					SQLiteDatabase db = mDbHelper.getWritableDatabase();
 					String selection = ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID + " LIKE?";
 					String[] selectionArgs = {id};
+					String[] selectionArgs2 = {"*"};
 					db.delete(ContractCoordinates.CoordinatesEntry.TABLE_NAME, selection, selectionArgs);
 					//***********************************************************************************
 					String[] projection = {
@@ -94,7 +94,6 @@ public class LocationListActivity extends Activity {
 					listview.setAdapter(nca);
 					db.close();
 					dialog.cancel();
-					
 				}
 			});
 			alertDialogBuilder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -104,48 +103,7 @@ public class LocationListActivity extends Activity {
 				}
 			});
 			AlertDialog alertDialog = alertDialogBuilder.create();
-			alertDialog.show();/*
-			SimpleCursorAdapter ca = (SimpleCursorAdapter) arg0.getAdapter();
-			Cursor c = ca.getCursor();
-			c.moveToPosition(listLocation);
-			String id = c.getString(c.getColumnIndex(ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID));
-			
-			GameDBHelper mDbHelper = new GameDBHelper(getBaseContext());
-			SQLiteDatabase db = mDbHelper.getWritableDatabase();
-			String selection = ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID + " LIKE?";
-			String[] selectionArgs = {id};
-			db.delete(ContractCoordinates.CoordinatesEntry.TABLE_NAME, selection, selectionArgs);
-			//***********************************************************************************
-			String[] projection = {
-					BaseColumns._ID,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LOCATION_NAME,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_DESCRIPTION,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LATITUDE,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LONGITUDE,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_DATE
-			};
-			String sortOrder = BaseColumns._ID + " DESC";
-			Cursor nc = db.query(
-					ContractCoordinates.CoordinatesEntry.TABLE_NAME,
-					projection,
-					null,
-					null,
-					null,
-					null,
-					sortOrder
-					);
-			nc.moveToFirst();
-			String[] fromColumns = {ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LOCATION_NAME,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LATITUDE,
-					ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LONGITUDE};
-			int[] toViews = {R.id.location_name, R.id.location_lat,R.id.location_lng};
-			SimpleCursorAdapter nca = new SimpleCursorAdapter(getBaseContext(), R.layout.coordinate_item_layout, nc, fromColumns, toViews,1);
-			ListView listview = (ListView)findViewById(R.id.myCoordinateList);
-			listview.setAdapter(nca);
-			db.close();*/
-			
-			//Toast.makeText(getBaseContext(), "Delete ID " , Toast.LENGTH_SHORT).show();
+			alertDialog.show();
 			return true;
 
 		}
@@ -193,19 +151,24 @@ public class LocationListActivity extends Activity {
 						null,
 						sortOrder
 						);
+
+				ListView listview = (ListView)findViewById(R.id.myCoordinateList);
+				if (c != null){
 				c.moveToFirst();
 				String[] fromColumns = {ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LOCATION_NAME,
 										ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LATITUDE,
 										ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LONGITUDE};
 				int[] toViews = {R.id.location_name, R.id.location_lat,R.id.location_lng};
 				SimpleCursorAdapter ca = new SimpleCursorAdapter(getBaseContext(), R.layout.coordinate_item_layout, c, fromColumns, toViews,1);
+				listview.setAdapter(ca);
+				}
 				db.close();
 
 				//******************************
 				//Add the adaptor to my ListView
 				//******************************
-				ListView listview = (ListView)findViewById(R.id.myCoordinateList);
-				listview.setAdapter(ca);
+				//ListView listview = (ListView)findViewById(R.id.myCoordinateList);
+				
 				listview.setOnItemClickListener(mMessageClickedHandler);
 				listview.setOnItemLongClickListener(mMessageLongClickedHandler);
 	}
@@ -230,7 +193,44 @@ public class LocationListActivity extends Activity {
 		alertDialogBuilder.setTitle("Clear all locations?")
 		.setPositiveButton("yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int ids) {
-				Toast.makeText(context, "clear all", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "cleared all", Toast.LENGTH_SHORT).show();
+				//Code for deleting all entries
+				GameDBHelper mDbHelper = new GameDBHelper(getBaseContext());
+				SQLiteDatabase db = mDbHelper.getWritableDatabase();
+				String selection = ContractCoordinates.CoordinatesEntry.COLUMN_NAME_DESCRIPTION + " LIKE?";
+				String[] selectionArgs2 = {"Newly added"};
+				db.delete(ContractCoordinates.CoordinatesEntry.TABLE_NAME, selection, selectionArgs2);
+				
+				String[] projection = {
+						BaseColumns._ID,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_ID,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LOCATION_NAME,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LATITUDE,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LONGITUDE
+				};
+				String sortOrder = BaseColumns._ID + " DESC";
+				Cursor nc = db.query(
+						ContractCoordinates.CoordinatesEntry.TABLE_NAME,
+						projection,
+						null,
+						null,
+						null,
+						null,
+						sortOrder
+						);
+				nc.moveToFirst();
+				String[] fromColumns = {ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LOCATION_NAME,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LATITUDE,
+						ContractCoordinates.CoordinatesEntry.COLUMN_NAME_LONGITUDE};
+				int[] toViews = {R.id.location_name, R.id.location_lat,R.id.location_lng};
+				SimpleCursorAdapter nca = new SimpleCursorAdapter(getBaseContext(), R.layout.coordinate_item_layout, nc, fromColumns, toViews,1);
+				ListView listview = (ListView)findViewById(R.id.myCoordinateList);
+				listview.setAdapter(nca);
+				db.close();
+
+				//dialog.cancel();
+				
+				
 			}
 		});
 		alertDialogBuilder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {

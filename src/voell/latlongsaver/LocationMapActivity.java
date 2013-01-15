@@ -27,8 +27,17 @@ public class LocationMapActivity extends MapActivity implements OnGestureListene
 {
 	private List mapOverlays;
 	private GestureMapView mapView;
-	
-@Override
+
+protected void onResume()
+{
+mapOverlays.clear();
+
+overlayLocations();
+
+	Toast.makeText(getBaseContext(), "hola", Toast.LENGTH_SHORT).show();
+	mapView.postInvalidate();
+	super.onResume();
+}
 protected void onCreate(Bundle bundle) 
 {
 		
