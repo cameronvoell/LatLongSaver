@@ -36,7 +36,7 @@ public class LocationListActivity extends Activity {
 		public void onItemClick(AdapterView arg0, View arg1, int listLocation, long orderAdded) 
 		{
 			
-			Toast.makeText(getBaseContext(), "Arg0 "+ arg0.toString() + "Arg1 "+ arg1.toString() + "Arg2 "+ listLocation +"Arg3 "+ orderAdded, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getBaseContext(), "Arg0 "+ arg0.toString() + "Arg1 "+ arg1.toString() + "Arg2 "+ listLocation +"Arg3 "+ orderAdded, Toast.LENGTH_SHORT).show();
 
 		}
 		
@@ -52,7 +52,7 @@ public class LocationListActivity extends Activity {
 			alertDialogBuilder.setTitle("Delete this location?")
 			.setPositiveButton("yes", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int ids) {
-					Toast.makeText(context, "chose 2", Toast.LENGTH_SHORT).show();
+					//Toast.makeText(context, " 2", Toast.LENGTH_SHORT).show();
 					SimpleCursorAdapter ca = (SimpleCursorAdapter) arg0.getAdapter();
 					Cursor c = ca.getCursor();
 					c.moveToPosition(listLocation);
@@ -318,7 +318,8 @@ public class LocationListActivity extends Activity {
     }
     public void showHelp(View v)
     {
-    	
+    	Intent intent = new Intent(getBaseContext(),HelpActivity.class);
+		startActivity(intent);
     }
 
 }

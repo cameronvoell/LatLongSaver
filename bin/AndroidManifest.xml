@@ -43,6 +43,9 @@
         <activity 
             android:name=".NewLocationFormActivity" 
             android:label="NewLocationForm"/>
+        <activity 
+            android:name=".HelpActivity" 
+            android:label="Help"/>
     </application>
     
 

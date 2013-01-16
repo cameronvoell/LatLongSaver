@@ -28,13 +28,11 @@ public class LocationMapActivity extends MapActivity implements OnGestureListene
 	private List mapOverlays;
 	private GestureMapView mapView;
 
+	//Redraw the Flags when the mapView resumes, in case of any changes
 	protected void onResume()
 	{
 		mapOverlays.clear();
-
 		overlayLocations();
-
-		Toast.makeText(getBaseContext(), "hola", Toast.LENGTH_SHORT).show();
 		mapView.postInvalidate();
 		super.onResume();
 	}
@@ -119,7 +117,7 @@ public class LocationMapActivity extends MapActivity implements OnGestureListene
 	@Override
 	public boolean onDoubleTapEvent(MotionEvent e) {
 
-		Toast.makeText(getBaseContext(), "hi", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(getBaseContext(), "hi", Toast.LENGTH_SHORT).show();
 		return true;
 	}
 
